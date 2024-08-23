@@ -1,30 +1,49 @@
-return {
-  'ray-x/go.nvim',
-  cond = function()
-    return not vim.g.vscode
-  end,
-  dependencies = { -- optional packages
-    'ray-x/guihua.lua',
-    'neovim/nvim-lspconfig',
-    'nvim-treesitter/nvim-treesitter',
-  },
-  config = function()
-    require('go').setup {
-      -- test_runner = 'gotestsum',
-      -- run_in_floaterm = true,
-      -- trouble = true,
-    }
-
-    local format_sync_grp = vim.api.nvim_create_augroup('goimports', {})
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      pattern = '*.go',
-      callback = function()
-        require('go.format').goimports()
-      end,
-      group = format_sync_grp,
-    })
-  end,
-  event = { 'CmdlineEnter' },
-  ft = { 'go', 'gomod' },
-  build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-}
+-- return {
+--   'ray-x/go.nvim',
+--   cond = function()
+--     return not vim.g.vscode
+--   end,
+--   dependencies = { -- optional packages
+--     'ray-x/guihua.lua',
+--     'neovim/nvim-lspconfig',
+--     'nvim-treesitter/nvim-treesitter',
+--   },
+--   config = function()
+--     require('go').setup {
+--       -- test_runner = 'gotestsum',
+--       -- run_in_floaterm = true,
+--       -- trouble = true,
+--     }
+--
+--     local format_sync_grp = vim.api.nvim_create_augroup('goimports', {})
+--     vim.api.nvim_create_autocmd('BufWritePre', {
+--       pattern = '*.go',
+--       callback = function()
+--         require('go.format').lsp_format()
+--       end,
+--       group = format_sync_grp,
+--     })
+-- --     local null_ls = require 'null-ls'
+-- --     local sources = {
+-- --       null_ls.builtins.diagnostics.golangci_lint,
+-- --       -- null_ls.builtins.formatting.golines.with {
+-- --       -- extra_args = {
+-- --       -- '--max-len=180',
+--       -- '--base-formatter=gofumpt',
+--       -- },
+--       -- },
+--     }
+--     -- for go.nvim
+--     local gotest = require('go.null_ls').gotest()
+--     local gotest_codeaction = require('go.null_ls').gotest_action()
+--     local golangci_lint = require('go.null_ls').golangci_lint()
+--     table.insert(sources, gotest)
+--     table.insert(sources, golangci_lint)
+--     table.insert(sources, gotest_codeaction)
+--     null_ls.setup { sources = sources, debounce = 1000, default_timeout = 5000 }
+--   end,
+-- event = { 'CmdlineEnter' },
+-- ft = { 'go', 'gomod' },
+-- build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+-- }
+return {}

@@ -1,5 +1,8 @@
 return {
   'axkirillov/easypick.nvim',
+  -- cond = function()
+  --   return not vim.g.vscode
+  -- end,
   requires = 'nvim-telescope/telescope.nvim',
   config = function()
     local easypick = require 'easypick'
